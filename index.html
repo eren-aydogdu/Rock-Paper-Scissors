@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <script>
+        function getComputerChoice() {
+            let randomNumber = Math.floor(Math.random()*3);
+            if (randomNumber === 0) {
+                return "rock";
+            }
+            else if (randomNumber === 1) {
+                return "paper";
+            }
+            else {
+                return "scissors";
+            }
+        }
+
+        let playerScore = 0;
+        let computerScore = 0;
+
+        function game() {
+            for (let round = 1; round <=5; round++) {
+            function playGame(playerSelection, computerSelection) {
+                computerSelection = getComputerChoice();
+                playerSelection = prompt("Rock, Paper or Scissors? Enter your selection here: ");
+                playerSelection = playerSelection.toLowerCase();
+                if (playerSelection === "rock" && computerSelection === "paper") {
+                    computerScore++;
+                    return "You chose Rock, Computer chose Paper. Paper beats Rock. You LOSE!";
+                }
+                else if (playerSelection === "paper" && computerSelection === "rock") {
+                    playerScore++;
+                    return "You chose Paper, Computer chose Rock. Paper beats Rock. You WIN!";
+                }
+                else if (playerSelection === "paper" && computerSelection === "scissors") {
+                    computerScore++;
+                    return "You chose Paper, Computer chose Scissors. Scissors beat Paper. You LOSE!"
+                }
+                else if (playerSelection === "scissors" && computerSelection === "paper") {
+                    playerScore++;
+                    return "You chose Scissors, Computer chose Paper. Scissors beat Paper. You WIN!";
+                }
+                else if (playerSelection === "rock" && computerSelection === "scissors") {
+                    playerScore++;
+                    return "You chose Rock, Computer chose Scissors. Rock beats Scissors. You WIN!"
+                }
+                else if (playerSelection === "scissors" && computerSelection === "rock") {
+                    computerScore++;
+                    return "You chose Scissors, Computer chose Rock. Rock beats Scissors. You LOSE!"
+                }
+                else {
+                    return (`You chose ${playerSelection} and Computer also chose ${computerSelection}. It's a DRAW`);
+                }
+            }
+            console.log(playGame());
+        }
+            if (computerScore>playerScore) {
+                console.log("Computer wins");
+            }
+            else if (computerScore<playerScore) {
+                console.log("Player wins");
+            }
+            else {
+                console.log("It's a draw");
+            }
+        }
+        game();
+        
+    </script>
+</body>
+</html>
